@@ -5,7 +5,7 @@ bearded/cap/busy-background sets). Per-frame nose landmark -> median-filter -> m
 -> crop pinned so the NOSE sits at frame center, Y full-height (zoom 1.0), Lanczos resize to 2160x3840.
 Usage: reframe_yunet.py INPUT OUTPUT [--zoom 1.0] [--smooth 41] [--model /tmp/yunet.onnx]"""
 # ── dropin-ai-editor portable path bootstrap (auto-inserted) ──
-import os as _os, sys as _sys
+import os as _os, sys as _sys, pathlib as _pl
 def _acq_root():
     r = _os.environ.get("DROPIN_PIPELINE_ROOT") or _os.environ.get("CLAUDE_PLUGIN_ROOT")
     if r and _os.path.isdir(_os.path.join(r, ".claude-plugin")):

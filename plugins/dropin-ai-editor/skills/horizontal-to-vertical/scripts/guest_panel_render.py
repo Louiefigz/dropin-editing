@@ -26,7 +26,7 @@ Usage:
       --roi "0.05 0.00 0.55 0.60" [--cut-frames f1,f2] [--panel-w 2160 --panel-h 1920]
 """
 # ── dropin-ai-editor portable path bootstrap (auto-inserted) ──
-import os as _os, sys as _sys
+import os as _os, sys as _sys, pathlib as _pl
 def _acq_root():
     r = _os.environ.get("DROPIN_PIPELINE_ROOT") or _os.environ.get("CLAUDE_PLUGIN_ROOT")
     if r and _os.path.isdir(_os.path.join(r, ".claude-plugin")):

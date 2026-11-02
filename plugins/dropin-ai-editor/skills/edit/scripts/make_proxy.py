@@ -9,7 +9,7 @@ on the proxy (4x less data per step), then final-render the APPROVED clips from 
     python3 make_proxy.py source_4k.mp4 [--out source.proxy.mp4] [--max 1920]
 """
 # ── dropin-ai-editor portable path bootstrap (auto-inserted) ──
-import os as _os, sys as _sys
+import os as _os, sys as _sys, pathlib as _pl
 def _acq_root():
     r = _os.environ.get("DROPIN_PIPELINE_ROOT") or _os.environ.get("CLAUDE_PLUGIN_ROOT")
     if r and _os.path.isdir(_os.path.join(r, ".claude-plugin")):
