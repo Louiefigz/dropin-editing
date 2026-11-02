@@ -1,0 +1,6 @@
+{
+  "schema": "dropin-editorial-connection/v1",
+  "function_url": "",
+  "project_ref": "",
+  "credential_file": "~/.config/dropin-ai-editor/editorial-team.json"
+}

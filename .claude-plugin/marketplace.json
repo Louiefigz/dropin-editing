@@ -1,0 +1,17 @@
+{
+  "name": "dropin-ai-editor-marketplace",
+  "owner": {
+    "name": "DropIn AI Editor",
+    "url": "https://getdropin.io"
+  },
+  "metadata": {
+    "description": "DropIn AI Editor \u2014 a white-label short-form clip pipeline for Claude Code."
+  },
+  "plugins": [
+    {
+      "name": "dropin-ai-editor",
+      "source": "./plugins/dropin-ai-editor",
+      "description": "Raw footage -> finished vertical clips (/edit) + horizontal subscriber-growth mids (/highlight). Reframe, caption, render, and a 6-gate self-audit. Optional Frame.io + Monday review delivery (/monday) with guided setup."
+    }
+  ]
+}

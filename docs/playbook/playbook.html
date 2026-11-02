@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>DropIn AI Editor Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* DropIn brand tokens, taken from getdropin.io */
+  :root {
+    --bg: #070d13;
+    --bg-2: #0a121c;
+    --panel: #101b28;
+    --line: #1c2c3d;
+    --text: #eef4f8;
+    --muted: #a7b9c8;
+    --dim: #7b91a3;
+    --teal: #14b8a6;
+    --teal-deep: #0d9488;
+    --mint: #7be3d3;
+    --mint-soft: #a5f3ec;
+  }
+  @page { size: letter; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); color: var(--text); font-family: Inter, sans-serif; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  .page {
+    width: 8.5in; height: 11in; padding: 0.7in 0.7in 0.6in;
+    position: relative; overflow: hidden; page-break-after: always;
+    background:
+      radial-gradient(ellipse 70% 40% at 50% 0%, rgba(20,184,166,0.10), transparent 70%),
+      var(--bg);
+  }
+  .page:last-child { page-break-after: auto; }
+
+  .mono { font-family: Inconsolata, monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+  .eyebrow { font-family: Inconsolata, monospace; font-size: 11pt; letter-spacing: 0.14em; color: var(--mint); text-transform: uppercase; margin-bottom: 10px; }
+  h1 { font-weight: 900; font-size: 44pt; line-height: 1.02; letter-spacing: -0.02em; }
+  h2 { font-weight: 900; font-size: 27pt; line-height: 1.1; letter-spacing: -0.015em; margin-bottom: 14px; }
+  h3 { font-weight: 800; font-size: 13pt; margin-bottom: 6px; }
+  p, li { font-size: 10.5pt; line-height: 1.55; color: var(--muted); }
+  p + p { margin-top: 10px; }
+  .lead { font-size: 12pt; color: var(--muted); max-width: 6.2in; margin-bottom: 22px; }
+  .accent { color: var(--mint); }
+  strong { color: var(--text); font-weight: 700; }
+  code { font-family: Inconsolata, monospace; font-size: 10pt; color: var(--mint-soft); }
+
+  .footer {
+    position: absolute; left: 0.7in; right: 0.7in; bottom: 0.4in;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: Inconsolata, monospace; font-size: 8.5pt; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--dim);
+    border-top: 1px solid var(--line); padding-top: 10px;
+  }
+  .wordmark { display: inline-flex; align-items: center; gap: 8px; font-family: Inconsolata, monospace; font-weight: 700; color: var(--mint); letter-spacing: 0.02em; text-transform: none; font-size: 11pt; }
+  .mark { width: 22px; height: 22px; border-radius: 6px; background: var(--teal-deep); display: inline-grid; place-items: center; color: #fff; font: 900 15px/1 Inter, sans-serif; }
+
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .stat-num { font-weight: 900; font-size: 26pt; color: var(--mint); line-height: 1; margin-bottom: 6px; }
+  .callout { border-left: 3px solid var(--teal); background: rgba(20,184,166,0.07); border-radius: 0 10px 10px 0; padding: 12px 16px; margin-top: 18px; }
+  .callout p { color: var(--text); }
+  .tag { display: inline-block; font-family: Inconsolata, monospace; font-size: 8pt; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mint); border: 1px solid rgba(123,227,211,0.35); border-radius: 999px; padding: 1px 8px; margin-left: 6px; vertical-align: 1px; }
+
+  /* Cover */
+  .cover { display: flex; flex-direction: column; justify-content: center; text-align: center; align-items: center; }
+  .cover .big-mark { width: 92px; height: 92px; border-radius: 22px; background: var(--teal-deep); display: grid; place-items: center; font: 900 64px/1 Inter, sans-serif; color: #fff; box-shadow: 0 0 60px rgba(20,184,166,0.45); margin-bottom: 30px; }
+  .pill { font-family: Inconsolata, monospace; font-size: 10pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mint); border: 1px solid rgba(123,227,211,0.35); border-radius: 999px; padding: 6px 16px; margin-bottom: 28px; background: rgba(20,184,166,0.06); }
+  .cover h1 { font-size: 54pt; margin-bottom: 22px; }
+  .cover .lead { margin: 0 auto 34px; text-align: center; font-size: 13.5pt; max-width: 5.6in; }
+
+  /* Flywheel */
+  .flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }
+  .flow .card { text-align: center; padding: 14px 10px; position: relative; }
+  .flow .card h3 { color: var(--mint); margin-bottom: 4px; }
+  .flow .card p { font-size: 9.5pt; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin-top: 6px; }
+  th { text-align: left; font-family: Inconsolata, monospace; font-size: 9pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  td { font-size: 10pt; line-height: 1.45; color: var(--muted); padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  td:first-child { color: var(--text); font-weight: 700; white-space: nowrap; }
+  td:last-child { font-family: Inconsolata, monospace; color: var(--mint); white-space: nowrap; }
+
+  /* Steps */
+  .terminal { font-family: Inconsolata, monospace; font-size: 11pt; background: #04090c; border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; color: var(--mint-soft); margin-bottom: 14px; }
+  .terminal span { color: var(--dim); }
+  .steps { list-style: none; }
+  .steps li { display: grid; grid-template-columns: 34px 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--line); font-size: 10pt; }
+  .steps li:last-child { border-bottom: 0; }
+  .steps .n { font-family: Inconsolata, monospace; font-weight: 700; font-size: 12pt; color: var(--teal); }
+
+  .box .card { padding: 10px 14px; }
+  .box p { font-size: 9.5pt; line-height: 1.45; }
+  .gate { min-height: 0; padding: 13px 16px; }
+  .gate .mono { font-size: 9pt; color: var(--dim); margin-bottom: 4px; }
+
+  .yours .card { display: grid; grid-template-columns: 38px 1fr; gap: 12px; align-items: start; margin-bottom: 10px; }
+  .yours .num { width: 30px; height: 30px; border-radius: 8px; background: rgba(20,184,166,0.15); border: 1px solid rgba(123,227,211,0.35); color: var(--mint); display: grid; place-items: center; font: 700 13pt/1 Inconsolata, monospace; }
+
+  .run .card + .card { margin-top: 10px; }
+  .run pre { font-family: Inconsolata, monospace; font-size: 9.5pt; line-height: 1.5; color: var(--mint-soft); background: #04090c; border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; margin-top: 6px; white-space: pre-wrap; }
+
+  .cta { margin-top: 20px; text-align: center; padding: 26px 24px; border-radius: 16px; border: 1px solid rgba(123,227,211,0.35);
+    background: radial-gradient(ellipse 80% 120% at 50% 0%, rgba(20,184,166,0.22), rgba(16,27,40,0.9)); }
+  .cta h2 { font-size: 24pt; margin-bottom: 8px; }
+  .cta p { color: var(--text); max-width: 5.4in; margin: 0 auto 14px; }
+  .button { display: inline-block; background: var(--teal); color: #04090c; font: 700 11pt/1 Inconsolata, monospace; letter-spacing: 0.1em; text-transform: uppercase; padding: 12px 22px; border-radius: 10px; text-decoration: none; }
+  a { color: var(--mint); }
+</style>
+</head>
+<body>
+
+<!-- 1 · Cover -->
+<section class="page cover">
+  <div class="big-mark">d</div>
+  <div class="pill">Free starter kit · Operator playbook</div>
+  <h1>DropIn<br><span class="accent">AI Editor</span></h1>
+  <p class="lead">One raw recording in. A batch of finished, captioned, self-checked vertical clips out. One command, one operator.</p>
+  <p style="max-width:5.4in;margin:0 auto">The same short-form system a full editing team would run, packaged so you can run it from your own Claude Code. Bring your footage and your style, then ship.</p>
+  <div class="footer"><span class="wordmark"><span class="mark">d</span>dropin</span><span>getdropin.io · v1</span></div>
+</section>
+
+<!-- 2 · Overview -->
+<section class="page">
+  <div class="eyebrow">01 · Overview</div>
+  <h2>What this is</h2>
+  <p class="lead">DropIn AI Editor turns one long recording (a Q&amp;A, podcast, interview or talk) into a set of vertical clips that are ready to post. It transcribes the footage, finds the strongest moments, cuts them cleanly, reframes to 9:16 around the speaker's face, burns in word-by-word captions, lays music under the voice, and checks its own work before anything is called done.</p>
+  <p>There is no app to log into. It is a set of skills that run inside <strong>Claude Code on your machine</strong>, driving a short list of proven tools. Your Claude Code session is the editor: it reads the bundled editorial playbooks and makes the cut and caption decisions itself, so you never need a separate model API key.</p>
+
+  <div class="grid-3" style="margin-top:24px">
+    <div class="card"><div class="stat-num">1</div><h3>command</h3><p>Point it at footage, say how many clips you want, and let it work.</p></div>
+    <div class="card"><div class="stat-num">6</div><h3>check gates</h3><p>Mechanics, story, picture, sound, captions and script, each checked on its own.</p></div>
+    <div class="card"><div class="stat-num">1</div><h3>operator</h3><p>No editing team needed. You review the finished batch.</p></div>
+  </div>
+
+  <h3 style="margin-top:30px">The loop it feeds</h3>
+  <p>Every batch you post teaches you what lands. Feed that back in and the next batch gets sharper.</p>
+  <div class="flow">
+    <div class="card"><h3>Create</h3><p>The clip engine turns raw footage into posts.</p></div>
+    <div class="card"><h3>Distribute</h3><p>Post on every short-form platform.</p></div>
+    <div class="card"><h3>Learn</h3><p>See which hooks and topics win.</p></div>
+    <div class="card"><h3>Compound</h3><p>Same input, better clips each round.</p></div>
+  </div>
+  <div class="footer"><span class="wordmark"><span class="mark">d</span>dropin</span><span>DropIn AI Editor · Playbook</span></div>
+</section>
+
+<!-- 3 · Stack -->
+<section class="page">
+  <div class="eyebrow">02 · The stack</div>
+  <h2>Every tool inside it</h2>
+  <p class="lead">Nothing here is exotic. The value is in the orchestration: the kit runs these tools in the right order and checks what comes out. You bring your own accounts where a tool needs one.</p>
+  <table>
+    <tr><th>Tool</th><th>Job in the pipeline</th><th>Cost</th></tr>
+    <tr><td>Claude Code</td><td>The editor. Reads the editorial playbooks, picks the moments, designs cuts and captions, runs every step.</td><td>your plan</td></tr>
+    <tr><td>AssemblyAI</td><td>Primary transcription with word timings, speaker labels and filler words: the timeline every cut hangs on.</td><td>your key</td></tr>
+    <tr><td>Gemini</td><td>Listens to the source audio and writes listener notes that help pick and order moments.</td><td>your key</td></tr>
+    <tr><td>Groq (Whisper)</td><td>Second transcription for the audit gates and a fallback path.</td><td>free tier</td></tr>
+    <tr><td>ffmpeg + libass</td><td>Cutting, encoding and burning captions into the picture.</td><td>free</td></tr>
+    <tr><td>OpenCV + YuNet</td><td>Face detection and tracking for the 16:9 to 9:16 reframe.</td><td>free</td></tr>
+    <tr><td>tesseract</td><td>Reads the burned captions back so the caption gate can check them.</td><td>free</td></tr>
+    <tr><td>yt-dlp / rclone</td><td>Pull footage from a link or a cloud drive into a clean project folder.</td><td>free</td></tr>
+    <tr><td>Remotion</td><td>Optional branded promos and end cards.</td><td>free</td></tr>
+  </table>
+  <div class="callout"><p><strong>What you actually pay for:</strong> your Claude Code plan, plus usage on the AssemblyAI and Gemini keys you connect. Everything that cuts, reframes, captions and renders runs on free, open tools on your own computer.</p></div>
+  <div class="footer"><span class="wordmark"><span class="mark">d</span>dropin</span><span>DropIn AI Editor · Playbook</span></div>
+</section>
+
+<!-- 4 · Workflow -->
+<section class="page">
+  <div class="eyebrow">03 · The workflow</div>
+  <h2>How a clip gets made</h2>
+  <p class="lead" style="margin-bottom:14px">You give one instruction and the kit walks this path. The tags mark where your taste comes in.</p>
+  <div class="terminal"><span>&gt;</span> /edit "cut this Q&amp;A into 6 vertical clips"</div>
+  <ol class="steps">
+    <li><span class="n">01</span><span><strong>Set up the project.</strong> Copy the footage from a file, link or drive into a clean folder: source, work, deliver. Originals are never touched.</span></li>
+    <li><span class="n">02</span><span><strong>Read the footage.</strong> Find faces, camera angles and audio levels so later steps frame and cut correctly.</span></li>
+    <li><span class="n">03</span><span><strong>Transcribe.</strong> Word-level timings with speakers and fillers, the spine for every cut.</span></li>
+    <li><span class="n">04</span><span><strong>Find the best moments.</strong> Score candidates against a real editorial rubric and rank them.<span class="tag">your taste</span></span></li>
+    <li><span class="n">05</span><span><strong>Lock the in and out.</strong> Each clip gets a hook, context and payoff, with no clipped words or false endings.</span></li>
+    <li><span class="n">06</span><span><strong>Cut and clean.</strong> Remove filler, dead air and stumbles, joining on silences so it sounds natural.</span></li>
+    <li><span class="n">07</span><span><strong>Reframe to vertical.</strong> Face-tracked 9:16 that keeps the speaker centered.<span class="tag">your look</span></span></li>
+    <li><span class="n">08</span><span><strong>Caption.</strong> Word-by-word captions in your font, colors and emphasis style.<span class="tag">your style</span></span></li>
+    <li><span class="n">09</span><span><strong>Add music.</strong> Match a track to each clip's energy and sit it under the voice.<span class="tag">your music</span></span></li>
+    <li><span class="n">10</span><span><strong>Render.</strong> Built in cached stages, so a later fix rebuilds only what changed.</span></li>
+    <li><span class="n">11</span><span><strong>Check: six gates.</strong> Every gate must pass. A clip that fails one does not ship.</span></li>
+    <li><span class="n">12</span><span><strong>Deliver.</strong> Finished clips land in the deliver folder for your final look, or go straight to Frame.io and Monday.</span></li>
+  </ol>
+  <div class="callout"><p><strong>Revisions are targeted.</strong> Fix a caption typo and only the caption stage runs again, not the whole clip.</p></div>
+  <div class="footer"><span class="wordmark"><span class="mark">d</span>dropin</span><span>DropIn AI Editor · Playbook</span></div>
+</section>
+
+<!-- 5 · Quality -->
+<section class="page">
+  <div class="eyebrow">04 · Quality control</div>
+  <h2>The six check gates</h2>
+  <p class="lead">This is what makes it safe to run hands-off. After each render, six separate checks each look at one thing, without knowing how the clip was made. All six must pass.</p>
+  <div class="grid-3">
+    <div class="card gate"><div class="mono">Gate 1</div><h3>Mechanics</h3><p>Resolution, length, black or frozen frames, clean first and last frames.</p></div>
+    <div class="card gate"><div class="mono">Gate 2</div><h3>Story</h3><p>A real hook, one clear arc, and a payoff that lands on the last line.</p></div>
+    <div class="card gate"><div class="mono">Gate 3</div><h3>Picture</h3><p>Face tracking and framing hold, with no jarring jumps or artifacts.</p></div>
+    <div class="card gate"><div class="mono">Gate 4</div><h3>Sound</h3><p>No clipped words, pops or level jumps. Music sits under the voice.</p></div>
+    <div class="card gate"><div class="mono">Gate 5</div><h3>Captions</h3><p>Accurate words, tight timing, correct colors, emphasis and placement.</p></div>
+    <div class="card gate"><div class="mono">Gate 6</div><h3>Script</h3><p>Would a cold viewer follow it? Context arrives before the payoff.</p></div>
+  </div>
+  <div class="callout" style="margin-top:16px"><p><strong>It learns from you.</strong> When you give feedback on a clip, the fix becomes a standing rule, so the same mistake does not ship twice. That is why the output gets better each cycle instead of drifting.</p></div>
+
+  <h3 style="margin-top:22px">More in the box</h3>
+  <p style="margin-bottom:10px">Shorts are the default, but the same engine runs a few more jobs.</p>
+  <div class="grid-2 box">
+    <div class="card"><h3><code>/highlight</code></h3><p>Mines a long recording into ranked horizontal highlight videos for a subscriber-growth channel.</p></div>
+    <div class="card"><h3><code>/listicle-short</code></h3><p>Turns a long video into a numbered, rapid-fire 60-second list short.</p></div>
+    <div class="card"><h3><code>/promo</code></h3><p>Branded promo videos and end cards built with Remotion.</p></div>
+    <div class="card"><h3><code>/monday</code></h3><p>Sends a finished batch to Frame.io and Monday.com with your brand routes and file names.</p></div>
+  </div>
+  <div class="footer"><span class="wordmark"><span class="mark">d</span>dropin</span><span>DropIn AI Editor · Playbook</span></div>
+</section>
+
+<!-- 6 · Make it yours -->
+<section class="page yours">
+  <div class="eyebrow">05 · Make it yours</div>
+  <h2>What you plug in</h2>
+  <p class="lead">The kit is brand-neutral on purpose. These five inputs make the clips look and sound like you instead of a template.</p>
+  <div class="card"><div class="num">1</div><div><h3>Your footage</h3><p>Drop raw recordings into the project's <code>00_SOURCE/</code> folder, or hand it a YouTube or drive link. The kit always copies first.</p></div></div>
+  <div class="card"><div class="num">2</div><div><h3>Your clip taste</h3><p>What makes a moment worth clipping for your audience: your hooks, topics and the kind of payoff you end on. Write it once and every batch uses it.</p></div></div>
+  <div class="card"><div class="num">3</div><div><h3>Your caption look</h3><p>Font, colors, emphasis and position. Free Montserrat ships as the default; drop your own font into <code>brand/fonts/</code>.</p></div></div>
+  <div class="card"><div class="num">4</div><div><h3>Your music</h3><p>Point <code>DROPIN_MUSIC</code> at your royalty-free library. The kit matches a track to each clip's energy and avoids repeating one within a batch.</p></div></div>
+  <div class="card"><div class="num">5</div><div><h3>Your connections</h3><p>AssemblyAI and Gemini keys, plus Groq for the audit gates. The agent walks you through each one and saves it privately on your machine, never in the repo or the chat.</p></div></div>
+  <div class="callout"><p>All of it lives in plain text and config files. No code changes needed to make it yours.</p></div>
+  <div class="footer"><span class="wordmark"><span class="mark">d</span>dropin</span><span>DropIn AI Editor · Playbook</span></div>
+</section>
+
+<!-- 7 · Get running -->
+<section class="page run">
+  <div class="eyebrow">06 · Get running</div>
+  <h2>Install and run</h2>
+  <div class="grid-2" style="margin-top:8px">
+    <div>
+      <div class="card"><h3>What you need</h3><p>Claude Code, Python 3.10+, ffmpeg with libass, and tesseract. yt-dlp and rclone for link and drive ingest; Node only for promos.</p></div>
+      <div class="card"><h3>1 · Get the kit</h3><pre>git clone https://github.com/Louiefigz/dropin-editing
+cd dropin-editing && ./setup.sh</pre></div>
+      <div class="card"><h3>2 · Let the agent set you up</h3><p>Open the folder in Claude Code and say <strong>"Set up DropIn AI Editor for me."</strong> It connects your keys, asks about your brand and makes a test clip.</p></div>
+    </div>
+    <div>
+      <div class="card"><h3>3 · Make clips</h3><pre>/edit &lt;your youtube link&gt;</pre><p style="margin-top:6px">Finished, checked clips land in the project's <code>20_DELIVER/</code> folder.</p></div>
+      <div class="card"><h3>Check readiness</h3><pre>python3 plugins/dropin-ai-editor/doctor.py</pre></div>
+      <div class="card"><h3>First run</h3><p>Test one short clip end to end to confirm ffmpeg, your keys and your assets are wired up. After that, batches just work.</p></div>
+    </div>
+  </div>
+  <div class="cta">
+    <div class="eyebrow" style="margin-bottom:6px">Shipping for more than one brand?</div>
+    <h2>Ship more video <span class="accent">with half the chaos.</span></h2>
+    <p>DropIn gives video-first teams one place to plan ideas, upload raw footage, manage edits and approvals, and publish everywhere from a single dashboard.</p>
+    <a class="button" href="https://getdropin.io">Start free at getdropin.io</a>
+  </div>
+  <div class="footer"><span class="wordmark"><span class="mark">d</span>dropin</span><span>Open source · MIT license</span></div>
+</section>
+
+</body>
+</html>
