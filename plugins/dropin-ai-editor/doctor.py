@@ -35,9 +35,9 @@ if not (ffmpeg and ffprobe and libass): brew_need.append("ffmpeg"); crit_ok = Fa
 ytd = has("yt-dlp"); print(f"  yt-dlp (URL in)    {mark(ytd)}")
 if not ytd: brew_need.append("yt-dlp"); crit_ok = False
 tess = has("tesseract"); print(f"  tesseract (audit)  {mark(tess)}  {Y}(optional){X}")
-if not tess: brew_need.append("tesseract")
+if not tess: notes.append("optional: brew install tesseract (caption checks)")
 rcl = has("rclone"); print(f"  rclone (drive in)  {mark(rcl)}  {Y}(optional){X}")
-if not rcl: brew_need.append("rclone")
+if not rcl: notes.append("optional: brew install rclone (only for Google Drive footage)")
 
 # ── python deps ──
 print("  " + "-" * 36)
@@ -57,6 +57,8 @@ print(f"  face model (yunet) {mark(yunet)}")
 crit_ok &= font and yunet
 if not font: notes.append("caption fonts missing — re-download the kit")
 if not yunet: notes.append("face model yunet.onnx missing — re-download the kit")
+
+tools_ok = crit_ok
 
 # ── transcription (key-free by default via local whisper) ──
 print("  " + "-" * 36)
@@ -79,15 +81,23 @@ if crit_ok:
     print(f"  {G}LOCAL TOOLS READY{X} — connections still need their own read checks; run:  /edit <your link>   (or ./bin/dropin-ai-editor \"<link>\")\n")
     sys.exit(0)
 
+if tools_ok:
+    print(f"  {G}TOOLS READY{X} — next, connect your keys: open this folder in Claude Code and say")
+    print("  \"Set up DropIn AI Editor for me\".")
+    for n in notes:
+        if n.startswith("optional"):
+            print(f"    · {n}")
+    print("")
+    sys.exit(1)
+
 print(f"  {R}NOT READY{X} — install ONLY what's missing:\n")
 if brew_need:
     if not has("brew"):
         print("    # Homebrew first: /bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"")
     print(f"    brew install {' '.join(dict.fromkeys(brew_need))}")
 if pip_need:
-    print(f"    cd {ROOT} && python3 -m venv .venv && source .venv/bin/activate \\")
-    print(f"        && pip install {' '.join(dict.fromkeys(pip_need))}")
+    print(f"    bash setup.sh   (from the kit's folder: {ROOT.parent.parent})")
 for n in notes:
     print(f"    ! {n}")
-print(f"\n  Then re-check:  python3 {Path(__file__).name}\n")
+print("\n  Then re-check:  bash setup.sh\n")
 sys.exit(1)

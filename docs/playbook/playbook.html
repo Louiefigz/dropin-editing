@@ -239,14 +239,13 @@
   <h2>Install and run</h2>
   <div class="grid-2" style="margin-top:8px">
     <div>
-      <div class="card"><h3>What you need</h3><p>Claude Code, Python 3.10+, ffmpeg with libass, and tesseract. yt-dlp and rclone for link and drive ingest; Node only for promos.</p></div>
-      <div class="card"><h3>1 · Get the kit</h3><pre>git clone https://github.com/Louiefigz/dropin-editing
-cd dropin-editing && ./setup.sh</pre></div>
-      <div class="card"><h3>2 · Let the agent set you up</h3><p>Open the folder in Claude Code and say <strong>"Set up DropIn AI Editor for me."</strong> It connects your keys, asks about your brand and makes a test clip.</p></div>
+      <div class="card"><h3>What you need</h3><p>A Mac, <strong>Claude Code</strong> and <strong>Homebrew</strong> (brew.sh). Claude Code installs everything else for you.</p></div>
+      <div class="card"><h3>1 · Get the kit</h3><p>Download it from GitHub (Code → Download ZIP) and unzip it.</p><pre>github.com/Louiefigz/dropin-editing</pre></div>
+      <div class="card"><h3>2 · Let the agent set you up</h3><p>Open the folder in Claude Code and say <strong>"Set up DropIn AI Editor for me."</strong> It installs the tools, connects your keys one at a time and makes a test clip.</p></div>
     </div>
     <div>
       <div class="card"><h3>3 · Make clips</h3><pre>/edit &lt;your youtube link&gt;</pre><p style="margin-top:6px">Finished, checked clips land in the project's <code>20_DELIVER/</code> folder.</p></div>
-      <div class="card"><h3>Check readiness</h3><pre>python3 plugins/dropin-ai-editor/doctor.py</pre></div>
+      <div class="card"><h3>Check readiness</h3><p>Ask Claude Code to "check my setup", or run:</p><pre>bash setup.sh</pre></div>
       <div class="card"><h3>First run</h3><p>Test one short clip end to end to confirm ffmpeg, your keys and your assets are wired up. After that, batches just work.</p></div>
     </div>
   </div>

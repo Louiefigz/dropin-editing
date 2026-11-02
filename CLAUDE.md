@@ -6,7 +6,11 @@ face-tracked **vertical clips**, in the creator's own brand. It's built to be ru
 run terminal commands or hand-edit files, and explain what's happening in plain English.
 
 ## First production use: onboarding
-Read `ONBOARDING.md` and run `python3 plugins/dropin-ai-editor/onboard.py status` before the first
+If `plugins/dropin-ai-editor/.venv/` does not exist yet, run `bash setup.sh` for the user first (it
+takes a minute or two and asks for nothing) and summarize its last lines in plain English. If it
+stops because Homebrew is missing, walk the user through installing Homebrew from https://brew.sh
+(it asks for their Mac password in their own Terminal), then run `bash setup.sh` again.
+Then read `ONBOARDING.md` and run `python3 plugins/dropin-ai-editor/onboard.py status` before the first
 setup/editing/delivery job. Resume the saved interview and connect the current `/edit` providers
 from `docs/CONNECTIONS.md`; **AssemblyAI is primary transcription**. Keep team-native bridge or
 editorial-document sources labeled accurately. No Anthropic/OpenAI key or separate Claude CLI is

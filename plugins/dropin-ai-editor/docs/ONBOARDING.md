@@ -47,7 +47,7 @@ Ask: **“Which brands do you edit for, and are you mainly making shorts?”** S
 identities and default to shorts. Ask which editing backend they intend to use: preserve an
 existing project choice; verify its tooling rather than silently substituting a backend.
 
-Run the kit's doctor with its `.venv` Python. Install only missing dependencies from `INSTALL.md`.
+If `.venv/` is missing, run the repository's `bash setup.sh` (it installs only what is missing), then run the kit's doctor.
 The repository contains a portable headless runtime. The current team's native Premiere/Filmcraft
 bridges need their own team-supplied installation/access; having
 API keys does not install those tools. Mark missing companion tooling **pending**, never ready.

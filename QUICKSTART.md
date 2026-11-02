@@ -1,14 +1,9 @@
 # Quickstart
 
-1. Open the repo in your agent and say **“Set up DropIn AI Editor for me.”**
-2. Follow the short [onboarding](ONBOARDING.md): tools, the same `/edit` connections, brands and delivery routes.
-3. Give it a video and say **“Make shorts from this.”**
+1. Open this folder in Claude Code (say yes if it asks to trust the folder).
+2. Say **"Set up DropIn AI Editor for me."** It installs the tools and connects your AssemblyAI,
+   Gemini and Groq keys one at a time, saving them privately on your Mac.
+3. Say **"Make shorts from <your YouTube link>."** Finished clips land in the project's `20_DELIVER/`.
 
-AssemblyAI is the primary transcriber. The agent walks you through getting your own keys and
-saves them privately. [Full connection inventory](docs/CONNECTIONS.md).
-
-Finished clips stay in the project's `20_DELIVER/`. To deliver a selected batch, say
-**“Push these clips to Frame and Monday.”**
-
-Technical check: `python3 plugins/dropin-ai-editor/doctor.py`. Connection/progress check:
-`python3 plugins/dropin-ai-editor/onboard.py status`. A local doctor pass is not an end-to-end test.
+To deliver a batch for review, say **"Push these clips to Frame and Monday."**
+Check the setup any time with `bash setup.sh`. [All keys and connections](docs/CONNECTIONS.md).

@@ -2,23 +2,33 @@
 
 A free, open-source kit from [DropIn](https://getdropin.io).
 
-**Raw footage in → finished, captioned, self-audited vertical clips out, with one command.**
+**Give it a long video. Get back finished, captioned vertical clips ready to post.**
 
-The full short-form pipeline as a Claude Code plugin: ingest → transcribe → mine the best
-moments (with a real editorial rubric) → hand-cut → face-track to 9:16 → caption → mix music →
-render → construction/file checks → deliver.
+DropIn AI Editor runs inside Claude Code on your Mac. It finds the best moments in a podcast,
+interview or talk, cuts them cleanly, keeps the speaker's face centered in a 9:16 frame, adds
+word-by-word captions and music, then checks every clip before handing it over.
+The [playbook](DropIn-AI-Editor-Playbook.pdf) walks through how it works.
 
-> **Start here:** open **`ONBOARDING.md`** and paste it into the **Claude Code** app — it installs
-> everything for you and interviews you about your brand (logo, fonts, colors, style), then makes a
-> test clip. No editing software, no terminal. [`DropIn-AI-Editor-Playbook.pdf`](DropIn-AI-Editor-Playbook.pdf) is the deeper walkthrough.
+## What you need
+- **A Mac.** Windows isn't supported yet.
+- **[Claude Code](https://claude.com/claude-code)**, the desktop app or the terminal version. It does the editing, so
+  you don't need any other AI subscription.
+- **[Homebrew](https://brew.sh)**, a free installer for Mac tools. If you don't have it, Claude Code will walk you
+  through it.
+- **Three accounts** you'll connect during setup: [AssemblyAI](https://www.assemblyai.com/dashboard)
+  (transcripts, pay as you go), [Google AI Studio](https://aistudio.google.com/apikey) (Gemini) and
+  [Groq](https://console.groq.com/keys). Gemini and Groq both have free tiers.
 
-## Quickstart
-```
-./setup.sh                         # installs ffmpeg + deps, runs a health check
-# then ask your agent: "Set up DropIn AI Editor for me" (ONBOARDING.md)
-/edit <your youtube link>          # in Claude Code   — or:   ./bin/dropin-ai-editor "<link>"
-```
-Check readiness any time: `python3 plugins/dropin-ai-editor/doctor.py`
+## Get started
+1. **Download the kit.** On this page click **Code → Download ZIP** and unzip it. (Or `git clone` it.)
+2. **Open the folder in Claude Code.** If it asks whether to trust the folder, say yes.
+3. **Say: "Set up DropIn AI Editor for me."** It installs everything (about a minute), then connects
+   your three accounts one at a time. You paste each key into a private prompt, never into the chat.
+4. **Make clips.** Say **"Make shorts from &lt;your YouTube link&gt;"**, or drop a video file in and say
+   "make shorts from this". Finished clips land in the project's `20_DELIVER/` folder.
+
+Prefer the terminal? Run `bash setup.sh` yourself, then start `claude` in this folder. Run it
+again any time to check that everything is still working.
 
 ## What's INCLUDED — the full method
 The complete editorial brain ships here (anonymized): the clip-selection rubric, the cut logic,
