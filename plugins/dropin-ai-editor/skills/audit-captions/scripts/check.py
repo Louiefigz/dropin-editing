@@ -109,12 +109,6 @@ def groq_key():
     k = os.environ.get("GROQ_API_KEY")
     if k:
         return k
-    for rc in (".zshrc", ".bashrc", ".profile"):
-        p = Path.home() / rc
-        if p.exists():
-            m = re.search(r'GROQ_API_KEY=["\']?([A-Za-z0-9_\-]+)', p.read_text())
-            if m:
-                return m.group(1)
     return None
 
 

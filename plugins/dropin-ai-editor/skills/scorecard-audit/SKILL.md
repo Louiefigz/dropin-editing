@@ -102,7 +102,7 @@ precedents on the next similar one.
 
 ## Auth
 
-Uses `ANTHROPIC_API_KEY` from `~/.zshrc` via the Anthropic Python SDK (preferred). Falls
+Uses `ANTHROPIC_API_KEY` from the environment via the Anthropic Python SDK (preferred). Falls
 back to `claude -p` if no key. Same setup as `correct_transcript.py`.
 
 ---

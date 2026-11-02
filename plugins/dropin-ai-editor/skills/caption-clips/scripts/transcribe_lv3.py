@@ -21,18 +21,6 @@ import argparse, json, os, re, subprocess, sys, time
 from pathlib import Path
 
 
-def load_zshrc_api_keys() -> None:
-    """Lift API_KEY/TOKEN exports from ~/.zshrc into os.environ."""
-    zshrc = Path.home() / ".zshrc"
-    if not zshrc.exists():
-        return
-    for line in zshrc.read_text().splitlines():
-        m = re.match(r'^\s*export\s+([A-Z_][A-Z0-9_]*)=(.*)$', line)
-        if m and ("API_KEY" in m.group(1) or "TOKEN" in m.group(1)):
-            val = m.group(2).strip().strip('"').strip("'")
-            os.environ.setdefault(m.group(1), val)
-
-
 def transcribe_clip(source: str, start: float, end: float,
                      api_key: str, model: str = 'whisper-large-v3') -> list[dict]:
     """Extract audio for [start, end] from source, send to Groq, return words."""

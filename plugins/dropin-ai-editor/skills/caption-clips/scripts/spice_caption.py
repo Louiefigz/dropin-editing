@@ -56,11 +56,6 @@ def load_key(name):
     v = os.environ.get(name)
     if v:
         return v
-    zshrc = Path.home() / ".zshrc"
-    if zshrc.exists():
-        m = re.search(rf'(?m)^\s*export\s+{name}=["\']?([^"\'\n]+)', zshrc.read_text())
-        if m:
-            return m.group(1).strip()
     return None
 
 

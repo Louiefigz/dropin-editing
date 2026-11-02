@@ -115,18 +115,6 @@ Output exactly ONE label, nothing else:
 """
 
 
-def load_zshrc_api_keys():
-    """Lift API_KEY/TOKEN exports from ~/.zshrc into os.environ."""
-    zshrc = Path.home() / ".zshrc"
-    if not zshrc.exists():
-        return
-    for line in zshrc.read_text().splitlines():
-        m = re.match(r'^\s*export\s+([A-Z_][A-Z0-9_]*)=(.*)$', line)
-        if m and ("API_KEY" in m.group(1) or "TOKEN" in m.group(1)):
-            val = m.group(2).strip().strip('"').strip("'")
-            os.environ.setdefault(m.group(1), val)
-
-
 def classify_vibe(transcript_text: str) -> str:
     """Groq llama-3.3 classifier. Falls back to 'default' on any error."""
     if not transcript_text.strip():
@@ -358,7 +346,6 @@ def main():
                     help="Classify + assign only, don't render")
     args = ap.parse_args()
 
-    load_zshrc_api_keys()
     pools = scan_music_library(args.assets_root)
     print("Music pool sizes:")
     for v, tracks in pools.items():

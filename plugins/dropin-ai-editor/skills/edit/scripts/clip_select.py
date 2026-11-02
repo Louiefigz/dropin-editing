@@ -18,7 +18,7 @@ verdict (judged): MINE >= 70 · MAYBE >= 50 · PASS < 50.  Disable the judge wit
 
 Input  : transcript JSON ({"segments":[{start,end,text}]}) or plain .txt
 Output : <out>.clips.json (ranked, scored) + <out>.clips.md (readable)
-Auth   : ANTHROPIC_API_KEY (env / ~/.zshrc) else the `claude -p` CLI.
+Auth   : ANTHROPIC_API_KEY (environment) else the `claude -p` CLI.
 Usage  : python3 clip_select.py --transcript pod.json --top 12 --out 10_WORK/pod
 """
 from __future__ import annotations
@@ -67,16 +67,8 @@ def load_transcript(p: Path) -> str:
 
 
 def get_key():
-    k = os.environ.get("ANTHROPIC_API_KEY")
-    if k:
-        return k
-    try:
-        m = re.search(r"sk-ant-[A-Za-z0-9_\-]+", (Path.home() / ".zshrc").read_text())
-        if m:
-            return m.group(0)
-    except Exception:
-        pass
-    return None
+    """Read the key from the environment only; never from shell startup files."""
+    return os.environ.get("ANTHROPIC_API_KEY") or None
 
 
 def call_claude(system: str, user: str) -> str:

@@ -82,19 +82,11 @@ def norm(w: str) -> str:
     return PUNCT_RE.sub("", str(w).strip().lower())
 
 
-# ---- Claude call (key from env/~/.zshrc; SDK with tool, else claude CLI) ----------------------
+# ---- Claude call (key from env; SDK with tool, else claude CLI) ----------------------
 
 def get_key() -> str | None:
-    k = os.environ.get("ANTHROPIC_API_KEY")
-    if k:
-        return k
-    try:
-        m = re.search(r"sk-ant-[A-Za-z0-9_\-]+", (Path.home() / ".zshrc").read_text())
-        if m:
-            return m.group(0)
-    except Exception:
-        pass
-    return None
+    """Read the key from the environment only; never from shell startup files."""
+    return os.environ.get("ANTHROPIC_API_KEY") or None
 
 
 def call_decisions(system: str, user: str, n_indices: int) -> dict[int, dict]:

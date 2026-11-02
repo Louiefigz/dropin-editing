@@ -17,7 +17,7 @@ SEGMENTER-X's known limitation: a 90-min transcript blows the single-pass token 
 just errors and tells you to split the video). We FIX that here by windowing the transcript into
 ~25-30 min chunks, segmenting each, then merging with offset-corrected line indices + timestamps.
 
-Claude-call pattern (SDK with `claude -p` CLI fallback, key from env or ~/.zshrc) is reused verbatim
+Claude-call pattern (SDK with `claude -p` CLI fallback, key from the environment) is reused verbatim
 from tam_select.py so this needs no new dependency beyond Anthropic.
 
 Input  : a long-form transcript — our JSON ({"segments":[{"start","end","text"[,"words"]}]}) or .txt
@@ -46,21 +46,12 @@ from pathlib import Path
 PROMPT_PATH = Path(__file__).resolve().parent.parent / "prompts" / "tam_segment.md"
 
 # ----------------------------------------------------------------------------------------------
-# Claude call — copied from tam_select.py (SDK first, claude CLI fallback, key from env/~/.zshrc).
+# Claude call — copied from tam_select.py (SDK first, claude CLI fallback, key from env).
 # ----------------------------------------------------------------------------------------------
 
 def get_key() -> str | None:
-    k = os.environ.get("ANTHROPIC_API_KEY")
-    if k:
-        return k
-    try:
-        z = (Path.home() / ".zshrc").read_text()
-        m = re.search(r"sk-ant-[A-Za-z0-9_\-]+", z)
-        if m:
-            return m.group(0)
-    except Exception:
-        pass
-    return None
+    """Read the key from the environment only; never from shell startup files."""
+    return os.environ.get("ANTHROPIC_API_KEY") or None
 
 
 def call_claude(system: str, user: str, max_tokens: int = 16000) -> str:

@@ -85,11 +85,6 @@ def _key():
     k = os.environ.get("GROQ_API_KEY")
     if k:
         return k
-    zsh = Path.home() / ".zshrc"
-    if zsh.exists():
-        m = re.search(r'GROQ_API_KEY=["\']?([A-Za-z0-9_\-]+)', zsh.read_text())
-        if m:
-            return m.group(1)
     return None
 
 

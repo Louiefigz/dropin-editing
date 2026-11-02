@@ -89,17 +89,8 @@ def _words_to_timestamped(words: list) -> str:
 
 
 def get_key() -> str | None:
-    k = os.environ.get("ANTHROPIC_API_KEY")
-    if k:
-        return k
-    try:
-        z = (Path.home() / ".zshrc").read_text()
-        m = re.search(r"sk-ant-[A-Za-z0-9_\-]+", z)
-        if m:
-            return m.group(0)
-    except Exception:
-        pass
-    return None
+    """Read the key from the environment only; never from shell startup files."""
+    return os.environ.get("ANTHROPIC_API_KEY") or None
 
 
 def call_claude(system: str, user: str) -> str:
