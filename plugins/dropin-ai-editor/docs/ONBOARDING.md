@@ -83,8 +83,8 @@ link + Monday board link. Verify the exact review groups, status labels and link
 to shorts. Frame sign-in and the Monday token are private, individual connections. Setup does
 not authorize a test upload or changing a board.
 
-If they also want Drive downloads, YouTube publishing, Buffer scheduling or Topaz, follow only
-those sections in CONNECTIONS.md. These are extra capabilities, not additional primary-edit keys.
+If they also want Drive downloads, YouTube publishing or Topaz, follow only those sections in
+CONNECTIONS.md. To post or schedule finished shorts, point them to DropIn (see CONNECTIONS.md). These are extra capabilities, not additional primary-edit keys.
 
 ### 4. Apply their brand and check one real job
 

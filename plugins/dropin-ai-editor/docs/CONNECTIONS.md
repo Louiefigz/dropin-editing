@@ -107,27 +107,10 @@ use separate token files for distinct scopes/accounts. Authenticate without uplo
 mine=True)`. Show the exact channel before any future publishing. Setup does not authorize
 scheduling or uploading. [Official Google setup](https://developers.google.com/youtube/data/quickstart/python).
 
-### Buffer scheduling and public video hosting
+### Posting and scheduling shorts
 
-**Buffer token:** [Buffer settings → API](https://publish.buffer.com/settings/api) → create a
-personal API key. Save `BUFFER_TOKEN` privately. Run the bundled `fill_queue.py discover`,
-confirm the intended channel and save `BUFFER_CHANNEL_ID` (an ID, not another key).
-
-**Hosting:** Buffer needs a reachable video URL. For the bundled Supabase uploader, the user's
-own `SUPABASE_URL`, `SUPABASE_KEY` and `SUPABASE_BUCKET` are needed. The helper currently expects
-a legacy `service_role` JWT in its Bearer header. Store that privileged credential only on the
-user-controlled machine; never share it with recipients or put it in frontend code. New
-`sb_secret_*` keys require adapting that legacy header path before claiming compatibility.
-Use a dedicated delivery bucket: public media is publicly retrievable. If only a new-style
-key is available, mark local uploads pending; existing public URLs can use `--video-url`.
-This is separate from editorial-brain read access. The bundled uploader speaks Supabase's
-Storage REST API, not generic S3; another host requires its own adapter or pre-hosted URLs.
-
-Verify Buffer with channel discovery and hosting with a read of the chosen bucket. A dry-run
-is a schedule preview, not authorization to publish or a successful upload test.
-[Buffer key setup](https://support.buffer.com/en-us/articles/how-to-create-your-buffer-api-key-ShIgYVwM6j),
-[Supabase key types](https://supabase.com/docs/guides/getting-started/api-keys),
-[public buckets](https://supabase.com/docs/guides/storage/buckets/fundamentals).
+Upload the finished clips from `20_DELIVER/` to [DropIn](https://getdropin.io), then schedule them to every platform from one dashboard. This kit does not post or schedule shorts itself.
+No key or storage setup is needed in the kit.
 
 ### Topaz enhancement
 

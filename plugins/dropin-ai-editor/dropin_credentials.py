@@ -7,8 +7,7 @@ CONFIG = Path.home() / '.config/dropin-ai-editor'
 KEYS_FILE = CONFIG / 'keys.env'
 FIELDS = (
     'ASSEMBLYAI_API_KEY', 'GEMINI_API_KEY', 'GROQ_API_KEY',
-    'TOPAZ_API_KEY', 'BUFFER_TOKEN', 'BUFFER_CHANNEL_ID',
-    'SUPABASE_URL', 'SUPABASE_KEY', 'SUPABASE_BUCKET',
+    'TOPAZ_API_KEY',
 )
 
 # Retain previously saved optional-helper values without asking new editors for them.

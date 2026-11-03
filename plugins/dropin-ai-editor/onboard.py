@@ -13,7 +13,7 @@ from pathlib import Path
 from dropin_credentials import CONFIG, FIELDS, KEYS_FILE, load_keys, read_values
 
 STATE = CONFIG / 'onboarding.json'
-FEATURES = ('editing', 'frame-monday', 'drive', 'youtube', 'buffer', 'topaz')
+FEATURES = ('editing', 'frame-monday', 'drive', 'youtube', 'topaz')
 
 
 def private_json(path, value):
