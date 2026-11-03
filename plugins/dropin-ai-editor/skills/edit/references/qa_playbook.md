@@ -266,7 +266,7 @@ python3 ${CLAUDE_PLUGIN_ROOT}/skills/render/engine.py <project>
 
 ---
 
-## FIELD-TESTED FIXES — first real-footage one-shot (2026-06-14, Tier1 0507 / Rebecca)
+## FIELD-TESTED FIXES — first real-footage one-shot (2026-06-14, one workshop guest)
 
 Three failures caught on the first real two-cam build. All are fixed in code; these are the RULES so they
 don't recur. Verify each on the DELIVERED file (measure, don't eyeball — Three Laws).

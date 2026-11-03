@@ -9,11 +9,11 @@ import { BrandSting } from '../components/BrandSting';
 import { NarratorChip } from '../components/CreateShots';
 import { RealClipShowcase } from '../components/RealClipShowcase';
 import { ChannelScroll } from '../components/ChannelScroll';
-import { RawSessionPlayer, Tier1Prompt, Tier1Pipeline, HeroClipPlayer, ContentFlywheel, CompoundsBeat, AutoPostScheduler } from '../components/Flywheel';
+import { RawSessionPlayer, WorkshopPrompt, WorkshopPipeline, HeroClipPlayer, ContentFlywheel, CompoundsBeat, AutoPostScheduler } from '../components/Flywheel';
 import { FXOverlay } from '../components/FXOverlay';
 import { AudioBed, Sfx } from '../audio';
 
-// THE CONTENT FLYWHEEL — live demo for the Tier1 Marketing Workshop (drops at "can I show you how we
+// THE CONTENT FLYWHEEL — live demo for a marketing workshop (drops at "can I show you how we
 // do it?"). One live Q&A → AI cuts it → MIDS (long-form) post on the highlights channel + SHORTS
 // (9:16) go to Instagram/TikTok/YouTube Shorts → new clients → back to the workshop. AI is the
 // accelerant at the cut step. Deck-native language. Order: raw → AI → mids → shorts → the loop.
@@ -42,13 +42,13 @@ export const FlywheelFilm: React.FC = () => (
       <TransitionSeries.Transition presentation={slide({ direction: 'from-right' })} timing={linearTiming({ durationInFrames: T })} />
 
       {/* RAW PROOF — the live Q&A AI can't fake */}
-      <TransitionSeries.Sequence durationInFrames={RAW}><RawSessionPlayer caption="Every Tier1 ends with a live Speaker Q&A. Real questions, real stakes." /></TransitionSeries.Sequence>
+      <TransitionSeries.Sequence durationInFrames={RAW}><RawSessionPlayer caption="Every workshop ends with a live Speaker Q&A. Real questions, real stakes." /></TransitionSeries.Sequence>
       <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: T })} />
 
       {/* THE WORKFLOW — AI is the captain */}
-      <TransitionSeries.Sequence durationInFrames={PROMPT}><Tier1Prompt caption="One operator. One command." /></TransitionSeries.Sequence>
+      <TransitionSeries.Sequence durationInFrames={PROMPT}><WorkshopPrompt caption="One operator. One command." /></TransitionSeries.Sequence>
       <TransitionSeries.Transition presentation={fade()} timing={linearTiming({ durationInFrames: T })} />
-      <TransitionSeries.Sequence durationInFrames={PIPE}><Tier1Pipeline caption="Trigger → action → result. No editor." /></TransitionSeries.Sequence>
+      <TransitionSeries.Sequence durationInFrames={PIPE}><WorkshopPipeline caption="Trigger → action → result. No editor." /></TransitionSeries.Sequence>
       <TransitionSeries.Transition presentation={slide({ direction: 'from-right' })} timing={linearTiming({ durationInFrames: T })} />
 
       {/* MIDS — the full answers, long-form, on the highlights channel */}
@@ -60,7 +60,7 @@ export const FlywheelFilm: React.FC = () => (
       <TransitionSeries.Transition presentation={slide({ direction: 'from-right' })} timing={linearTiming({ durationInFrames: T })} />
 
       {/* SHORTS — the sharpest moments, 9:16, to the socials */}
-      <TransitionSeries.Sequence durationInFrames={HERO}><HeroClipPlayer clip="l1_sixgyms" title="“Six gyms to zero.”" caption="And the sharpest moments become shorts." /></TransitionSeries.Sequence>
+      <TransitionSeries.Sequence durationInFrames={HERO}><HeroClipPlayer clip="clip_01" title="“Your best line here.”" caption="And the sharpest moments become shorts." /></TransitionSeries.Sequence>
       <TransitionSeries.Transition presentation={slide({ direction: 'from-right' })} timing={linearTiming({ durationInFrames: T })} />
       <TransitionSeries.Sequence durationInFrames={GRID}><RealClipShowcase /></TransitionSeries.Sequence>
       <TransitionSeries.Transition presentation={slide({ direction: 'from-bottom' })} timing={linearTiming({ durationInFrames: T })} />

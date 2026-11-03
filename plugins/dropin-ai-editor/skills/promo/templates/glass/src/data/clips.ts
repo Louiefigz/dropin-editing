@@ -1,9 +1,8 @@
-// REAL clips from a REAL job: speaker/2026-06-13_Tier1Workshop_QA — Speaker's live Q&A on the last day of
-// the $5k Tier1 workshop → 9:16 SHORTS, cut end-to-end by the pipeline. Row 1 = the 5 vetted/gated
-// deliverables; row 2 = 5 more pulled from the same Q&A to show the volume one session yields.
-// These 720x1280 proxies PLAY in the flywheel film (muted grid tiles), so the demo shows the
-// actual output, not stock filler.
+// Sample clip ids: each loads public/clips/<id>.mp4. Replace them with 720x1280 proxies of your own job's
+// 9:16 shorts. Row 1 = the vetted deliverables; row 2 = more from the same session to show the volume.
+// These proxies PLAY in the flywheel film (muted grid tiles), so the demo shows the actual output, not
+// stock filler.
 export const CLIPS = [
-  'l1_sixgyms', 'l1_golf', 'l1_architect', 'l1_fire', 'l1_swamp',
-  'l1_06', 'l1_07', 'l1_08', 'l1_09', 'l1_10',
+  'clip_01', 'clip_02', 'clip_03', 'clip_04', 'clip_05',
+  'clip_06', 'clip_07', 'clip_08', 'clip_09', 'clip_10',
 ];

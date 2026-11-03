@@ -6,15 +6,15 @@ import { GlassPanel } from './GlassPanel';
 
 const { fontFamily: poppins } = loadPoppins();
 
-// REAL long-form MIDS from the actual highlights channel (youtube.com/@Highlights · Videos tab),
-// with real titles' thumbnails + real runtimes — the workshop-Q&A mids that post there.
+// Sample long-form MIDS grid. Placeholder ids: each loads public/clips/yt_long/<id>.jpg. Replace them with
+// your own channel's videos and runtimes.
 const THUMBS = [
-  { id: 'IKRBA9ALc68', d: '8:31' }, { id: 'n7CYRXrdebU', d: '9:04' }, { id: 'rSoTier1TZ4G28', d: '7:13' },
-  { id: 'U8Noy9ly7A4', d: '7:06' }, { id: 'G3NUEoTJ0Ec', d: '9:40' }, { id: 'ls3VjXEW-R4', d: '1:27' },
-  { id: 'f0AY76fE9GI', d: '13:58' }, { id: '_9Wiua_4SJ8', d: '8:00' }, { id: '9Xmcfgf1tsc', d: '5:15' },
-  { id: 'MKz81j4FsSM', d: '5:18' }, { id: 'PEnDTYaSVw0', d: '8:55' }, { id: 'NTm8BibjUqQ', d: '34:17' },
-  { id: 'bHOR3aMRs1U', d: '10:58' }, { id: 'k8-xbMrcUtA', d: '11:36' }, { id: 'DiOVkIanOkQ', d: '4:55' },
-  { id: 'bBm70Ojep80', d: '2:03' },
+  { id: 'thumb_01', d: '8:31' }, { id: 'thumb_02', d: '9:04' }, { id: 'thumb_03', d: '7:13' },
+  { id: 'thumb_04', d: '7:06' }, { id: 'thumb_05', d: '9:40' }, { id: 'thumb_06', d: '1:27' },
+  { id: 'thumb_07', d: '13:58' }, { id: 'thumb_08', d: '8:00' }, { id: 'thumb_09', d: '5:15' },
+  { id: 'thumb_10', d: '5:18' }, { id: 'thumb_11', d: '8:55' }, { id: 'thumb_12', d: '34:17' },
+  { id: 'thumb_13', d: '10:58' }, { id: 'thumb_14', d: '11:36' }, { id: 'thumb_15', d: '4:55' },
+  { id: 'thumb_16', d: '2:03' },
 ];
 
 export const ChannelScroll: React.FC = () => {

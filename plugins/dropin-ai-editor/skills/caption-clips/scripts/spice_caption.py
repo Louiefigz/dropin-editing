@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """spice_caption.py — the ONE "video in -> LOCKED spice-captioned video out" entry point.
 
-THE SINGLE SOURCE OF TRUTH for burning the locked the reference editor/spice captions onto a clip:
+THE SINGLE SOURCE OF TRUTH for burning the locked reference-editor/spice captions onto a clip:
   transcribe (Groq) -> spice_format (The reference editor's 9-rule text spec, timestamp-preserving) -> caption_director
   -> generate_spice --burn (two-layer gblur Premiere shadow, resolution-adaptive, per-word color) -> caption_qc.
 

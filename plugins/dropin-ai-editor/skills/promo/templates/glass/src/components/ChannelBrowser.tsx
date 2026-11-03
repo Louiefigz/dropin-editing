@@ -89,7 +89,7 @@ const YouTubeLogo: React.FC = () => (
 const VerifiedTick: React.FC = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" style={{ marginLeft: 8, marginTop: 6 }}>
     <circle cx="12" cy="12" r="11" fill="#909090" />
-    <path d="M7 12.5 Tier10.5 16 Tier17 8.5" stroke="#fff" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+    <path d="M7 12.5 L10.5 16 L17 8.5" stroke="#fff" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -112,7 +112,7 @@ const Card: React.FC<{ v: ChannelVideo }> = ({ v }) => (
 
 const Cursor: React.FC<{ x: number; y: number }> = ({ x, y }) => (
   <svg width="26" height="38" viewBox="0 0 26 38" style={{ position: "absolute", left: x, top: y, filter: "drop-shadow(0 2px 3px rgba(0,0,0,0.45))" }}>
-    <path d="M2 2 L2 27 L9 20 Tier13.5 30 Tier17 28.3 Tier12.7 18.6 L22 18.6 Z" fill="#fff" stroke="#000" strokeWidth="1.6" strokeLinejoin="round" />
+    <path d="M2 2 L2 27 L9 20 L13.5 30 L17 28.3 L12.7 18.6 L22 18.6 Z" fill="#fff" stroke="#000" strokeWidth="1.6" strokeLinejoin="round" />
   </svg>
 );
 
