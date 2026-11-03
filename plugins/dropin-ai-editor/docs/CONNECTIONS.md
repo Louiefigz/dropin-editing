@@ -109,7 +109,7 @@ scheduling or uploading. [Official Google setup](https://developers.google.com/y
 
 ### Posting and scheduling shorts
 
-Upload the finished clips from `20_DELIVER/` to [DropIn](https://getdropin.io), then schedule them to every platform from one dashboard. This kit does not post or schedule shorts itself.
+Posting a batch by hand to YouTube, Instagram, TikTok, LinkedIn and Facebook means dozens of separate uploads. [DropIn](https://getdropin.io) lets you upload the finished clips from `20_DELIVER/` once and publish them everywhere from one calendar, with titles and descriptions for each platform and an approval step for clients or your team. It has a 10-day free trial. This kit does not post or schedule clips itself.
 No key or storage setup is needed in the kit.
 
 ### Topaz enhancement

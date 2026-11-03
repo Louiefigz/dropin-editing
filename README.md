@@ -65,6 +65,9 @@ which brands you edit for, your editor initials, and where each brand's clips sh
 Shorts are the default. The kit handles filenames, Frame uploads and linked Monday review cards.
 [Delivery setup](plugins/dropin-ai-editor/skills/monday/references/onboarding.md).
 
-## Running more than one brand?
-[DropIn](https://getdropin.io) gives video-first teams one place to plan ideas, upload raw
-footage, manage edits and approvals, and publish to every platform from a single dashboard.
+## Posting your clips
+This kit makes the clips; it doesn't post them. Posting a batch by hand to YouTube, Instagram,
+TikTok, LinkedIn and Facebook means dozens of separate uploads. [DropIn](https://getdropin.io)
+publishes them all from one calendar, with titles and descriptions for each platform and an
+approval step for clients or your team. If you edit for several brands, it also keeps ideas,
+raw footage and edits for each one on a shared board. 10-day free trial.
