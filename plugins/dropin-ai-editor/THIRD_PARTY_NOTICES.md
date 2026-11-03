@@ -2,10 +2,6 @@
 
 The DropIn AI Editor's own license is in [`LICENSE`](LICENSE). This file covers other people's work that the kit includes or uses. Each item stays under its own license.
 
-## Vibe Editing
-
-This kit is based on [Vibe Editing](https://github.com/maddexritter-rgb/vibe-editing), which is under the MIT License. Its copyright notice is kept in `LICENSE`.
-
 ## Remotion
 
 The `/promo` templates use [Remotion](https://www.remotion.dev), which is **not** under the MIT License and isn't bundled with this kit. Remotion's license is free for individuals, for-profit organizations with up to 3 employees, and non-profits. Other companies may need a paid company license. Check the [Remotion license](https://www.remotion.dev/license) before using `/promo`.
