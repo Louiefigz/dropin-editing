@@ -4,7 +4,7 @@
 Transcribes the clip independently, parses the burnt .ass subtitle source, and
 cross-checks accuracy, speaker colors, timing, formatting, and coverage gaps.
 
-The ONE house caption style is "spice" (the locked the reference editor look): captions are
+The ONE house caption style is "spice" (the locked reference-editor look): captions are
 CHUNK-displayed stylized text (1-3 words/cue), with a drop-in animation, a 3-5
 frame lead per SOP, and PUNCTUATION STRIPPED BY DESIGN (spice_format lowercases
 -except and removes sentence punctuation). A word-for-word, punctuation-included

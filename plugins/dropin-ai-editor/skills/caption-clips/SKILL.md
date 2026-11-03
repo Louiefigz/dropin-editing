@@ -1,6 +1,6 @@
 ---
 name: caption-clips
-description: THE single caption skill. There is ONE caption style for ALL footage — "spice" (the locked the reference editor look). Burns it onto any short-form clip via ONE engine. Default and only style. Use whenever the user says "caption this", "add captions", "pro/speaker/spice/montserrat captions", "caption these clips", "split this reel and caption each one", or "/glow" (glow is retired → produces spice). Trigger keywords caption this clip, add captions, pro captions, spice captions, speaker captions, montserrat captions, caption these, reel captions, subtitle, burnt-in captions, word-by-word captions, glow.
+description: THE single caption skill. There is ONE caption style for ALL footage — "spice" (the locked reference-editor look). Burns it onto any short-form clip via ONE engine. Default and only style. Use whenever the user says "caption this", "add captions", "pro/speaker/spice/montserrat captions", "caption these clips", "split this reel and caption each one", or "/glow" (glow is retired → produces spice). Trigger keywords caption this clip, add captions, pro captions, spice captions, speaker captions, montserrat captions, caption these, reel captions, subtitle, burnt-in captions, word-by-word captions, glow.
 ---
 
 # caption-clips — ONE caption style for everything
@@ -49,7 +49,7 @@ scripted model directors/selectors are optional legacy utilities, not the defaul
 ---
 
 
-There is **exactly one caption style: spice** (the locked the reference editor look). Same fonts, shadow, weights,
+There is **exactly one caption style: spice** (the locked reference-editor look). Same fonts, shadow, weights,
 sizes, italics for EVERY clip and footage type. The only things that change are **automatic
 decision-tree branches** inside that one style (below). All older styles (`pro`, `pro_locked`,
 `speaker_canon`, `ugc`, `glow`) and their generators (`generate_ass.py`, `batch_pro.py`) were **deleted

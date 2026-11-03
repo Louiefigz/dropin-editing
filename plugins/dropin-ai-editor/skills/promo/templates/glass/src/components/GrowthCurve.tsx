@@ -8,14 +8,14 @@ const { fontFamily: poppins } = loadPoppins();
 
 // The exclamation point: a compounding exponential growth curve, milestones plotting on as it sweeps,
 // climaxing on 3 -> 200 + Brand logo. v2: 2x the "sexy spice" — comet draw head, glowing reveal fill,
-// ring-pulse milestones, climax flash + rising sparks, breathing glow. Years best-guess, extends to 2026.
+// ring-pulse milestones, climax flash + rising sparks, breathing glow. Placeholders: set each label + year per film.
 const MILES = [
-  { x: 0.05, label: 'Day Zero', year: '2020' },
-  { x: 0.24, label: 'The Mission', year: '2021' },
-  { x: 0.45, label: '$100M Leads', year: '2023' },
-  { x: 0.63, label: 'Vegas HQ + Tier1', year: '2024' },
-  { x: 0.81, label: 'Creator joins', year: '2025' },
-  { x: 0.96, label: '$100M Money Models', year: '2025' },
+  { x: 0.05, label: 'Milestone 1', year: 'YYYY' },
+  { x: 0.24, label: 'Milestone 2', year: 'YYYY' },
+  { x: 0.45, label: 'Milestone 3', year: 'YYYY' },
+  { x: 0.63, label: 'Milestone 4', year: 'YYYY' },
+  { x: 0.81, label: 'Milestone 5', year: 'YYYY' },
+  { x: 0.96, label: 'Milestone 6', year: 'YYYY' },
 ];
 const TICKS = [{ yr: '2020', xx: 0 }, { yr: '2022', xx: 0.33 }, { yr: '2024', xx: 0.67 }, { yr: '2026', xx: 1 }];
 
@@ -124,7 +124,7 @@ export const GrowthCurve: React.FC = () => {
             <div style={{ fontFamily: poppins, fontWeight: 800, fontSize: 158, lineHeight: 0.95, color: COLORS.white, textShadow: `0 0 ${50 * breathe}px ${COLORS.indigo}` }}>
               3 <span style={{ color: COLORS.lavender }}>&rarr;</span> {teamN}
             </div>
-            <div style={{ fontFamily: poppins, fontWeight: 600, fontSize: 30, letterSpacing: 5, color: COLORS.lavender, marginTop: 8 }}>TEAM MEMBERS SINCE DAY ZERO</div>
+            <div style={{ fontFamily: poppins, fontWeight: 600, fontSize: 30, letterSpacing: 5, color: COLORS.lavender, marginTop: 8 }}>YOUR STAT LABEL</div>
           </div>
         </AbsoluteFill>
 

@@ -10,7 +10,7 @@ const { fontFamily: poppins } = loadPoppins();
 const { fontFamily: mono } = loadMono();
 const GREEN = '#27c93f';
 
-// ── RAW SESSION: the live Tier1 Q&A playing in a glass media player (the irreplaceable proof) ──
+// ── RAW SESSION: the live Q&A playing in a glass media player (the irreplaceable proof) ──
 export const RawSessionPlayer: React.FC<{ caption: string }> = ({ caption }) => {
   const f = useCurrentFrame(); const { fps } = useVideoConfig();
   const s = spring({ frame: f, fps, config: { damping: 200, stiffness: 90, mass: 0.7 } });
@@ -20,11 +20,11 @@ export const RawSessionPlayer: React.FC<{ caption: string }> = ({ caption }) => 
       <div style={{ transform: `scale(${interpolate(s, [0, 1], [0.95, 1]) * push})`, opacity: s, marginBottom: 40 }}>
         <GlassPanel radius={18} sheen={false} style={{ width: 1180, padding: 0, overflow: 'hidden' }}>
           <div style={{ position: 'relative', width: 1180, height: 663, background: '#000' }}>
-            <OffthreadVideo src={staticFile('recordings/l1_raw.mp4')} muted style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <OffthreadVideo src={staticFile('recordings/raw_session.mp4')} muted style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,0,0,0.35) 0%, transparent 28%, transparent 64%, rgba(0,0,0,0.62) 100%)' }} />
             <div style={{ position: 'absolute', top: 22, left: 26, display: 'flex', alignItems: 'center', gap: 10, background: 'rgba(0,0,0,0.5)', borderRadius: 100, padding: '8px 18px', backdropFilter: 'blur(8px)' }}>
               <div style={{ width: 9, height: 9, borderRadius: '50%', background: '#ff3b3b' }} />
-              <span style={{ fontFamily: poppins, fontWeight: 600, fontSize: 20, color: '#fff', letterSpacing: '0.5px' }}>Tier1 DAY 2 · LIVE Q&amp;A</span>
+              <span style={{ fontFamily: poppins, fontWeight: 600, fontSize: 20, color: '#fff', letterSpacing: '0.5px' }}>DAY 2 · LIVE Q&amp;A</span>
             </div>
             <div style={{ position: 'absolute', bottom: 26, left: 28, right: 28 }}>
               <div style={{ height: 6, borderRadius: 3, background: 'rgba(255,255,255,0.3)' }}><div style={{ width: '46%', height: '100%', borderRadius: 3, background: COLORS.indigo }} /></div>
@@ -38,12 +38,12 @@ export const RawSessionPlayer: React.FC<{ caption: string }> = ({ caption }) => 
   );
 };
 
-// ── Tier1 PROMPT: one command kicks the whole pipeline ──
-export const Tier1Prompt: React.FC<{ caption: string }> = ({ caption }) => {
+// ── WORKSHOP PROMPT: one command kicks the whole pipeline ──
+export const WorkshopPrompt: React.FC<{ caption: string }> = ({ caption }) => {
   const f = useCurrentFrame(); const { fps } = useVideoConfig();
   const s = spring({ frame: f, fps, config: { damping: 200, stiffness: 110, mass: 0.6 } });
   const push = interpolate(f, [0, 48], [1.07, 1], { extrapolateRight: 'clamp' });
-  const prompt = 'claude "cut the Tier1 Q&A into mids"';
+  const prompt = 'claude "cut the Q&A into mids"';
   const chars = Math.floor(interpolate(f, [6, 40], [0, prompt.length], { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }));
   return (
     <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center' }}>
@@ -60,9 +60,9 @@ export const Tier1Prompt: React.FC<{ caption: string }> = ({ caption }) => {
   );
 };
 
-// ── Tier1 PIPELINE: the trigger→action→result steps for a Q&A ──
+// ── WORKSHOP PIPELINE: the trigger→action→result steps for a Q&A ──
 const STEPS = ['Reads every question + answer', 'Finds the moments that land', 'Cuts, reframes & captions each', 'Audits itself, then ships'];
-export const Tier1Pipeline: React.FC<{ caption: string }> = ({ caption }) => {
+export const WorkshopPipeline: React.FC<{ caption: string }> = ({ caption }) => {
   const f = useCurrentFrame(); const { fps } = useVideoConfig();
   const s = spring({ frame: f, fps, config: { damping: 200, stiffness: 110, mass: 0.6 } });
   return (
@@ -117,7 +117,7 @@ export const HeroClipPlayer: React.FC<{ clip: string; title: string; caption: st
 
 // ── CONTENT FLYWHEEL: the loop — each turn compounds. AI is the accelerant at the cut step ──
 const NODES = [
-  { label: 'Tier1 WORKSHOP', sub: 'the $5k front-end' },
+  { label: 'WORKSHOP', sub: 'the front-end' },
   { label: 'LIVE Q&A', sub: 'Speaker, day two' },
   { label: 'AI CUTS IT', sub: 'one operator', ai: true },
   { label: 'MIDS + SHORTS', sub: 'highlights + socials' },
@@ -208,16 +208,16 @@ const TERM: { d: number; t: string; k: string }[] = [
   { d: 16, t: 'Navigating to YouTube Studio…', k: 'dim' },
   { d: 23, t: 'Logged in → Creator Highlights ✓', k: 'dim' },
   { d: 29, t: 'publishDraft injected.', k: 'dim' },
-  { d: 37, t: '[slot 11] "Scaling a Pro Volleyball Brand…"', k: 'w' },
+  { d: 37, t: '[slot 11] "Sample video one…"', k: 'w' },
   { d: 44, t: '   Details ✓  Monetization On ✓', k: 'dim' },
   { d: 51, t: '   Ad suitability → Safe for ads ✓', k: 'dim' },
   { d: 58, t: '   Visibility → Public → Schedule ✓', k: 'dim' },
   { d: 66, t: '   OK   scheduled · Jun 28 · 9:00 AM ET', k: 'g' },
-  { d: 78, t: '[slot 12] "Kill the Customer That’s…"    OK', k: 'g' },
-  { d: 88, t: '[slot 13] "Helping a $20M Fence Co…"     OK', k: 'g' },
-  { d: 98, t: '[slot 14] "Hire the Right Leadership…"   OK', k: 'g' },
+  { d: 78, t: '[slot 12] "Sample video two…"    OK', k: 'g' },
+  { d: 88, t: '[slot 13] "Sample video three…"  OK', k: 'g' },
+  { d: 98, t: '[slot 14] "Sample video four…"   OK', k: 'g' },
   { d: 110, t: 'Done. 15 drafts scheduled this run.', k: 'wb' },
-  { d: 118, t: '1,910 published all-time · 0 editors', k: 'lav' },
+  { d: 118, t: '1,000 published all-time · 0 editors', k: 'lav' },
 ];
 const TERM_COL: Record<string, string> = { cmd: '#e6e6ee', dim: 'rgba(255,255,255,0.5)', w: '#fff', g: GREEN, wb: '#fff', lav: COLORS.lavender };
 export const AutoPostScheduler: React.FC<{ caption: string }> = ({ caption }) => {
